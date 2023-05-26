@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Doctors</title>
+	<style>
+		body{
+			background-image: url(images/img.jpg);
+			background-size: auto;
+		}
+		.container {
+			max-width: 600px;
+			margin: 50px auto;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+
+		.card {
+			width: calc(50% - 20px);
+			margin-bottom: 40px;
+			padding: 20px;
+			background-color: #f0f0f0;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			font-family: Arial, sans-serif;
+			transition: transform 0.2s, box-shadow 0.2s;
+			cursor: pointer;
+		}
+
+		.card:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+		}
+
+		.card h2 {
+			margin: 0 0 10px;
+			font-size: 24px;
+			font-weight: bold;
+			color: #333;
+		}
+
+		.card p {
+			margin: 0;
+			font-size: 16px;
+			color: #666;
+		}
+
+		.card img {
+			max-width: 100%;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<img src="https://via.placeholder.com/300x300" alt="Doctor 1">
+			<h2>Doctor 1</h2>
+			<p>Specialty: Pediatrics</p>
+			<p>Experience: 10 years</p>
+			<p>Location: New York, NY</p>
+		</div>
+		<div class="card">
+			<img src="https://via.placeholder.com/300x300" alt="Doctor 2">
+			<h2>Doctor 2</h2>
+			<p>Specialty: Cardiology</p>
+			<p>Experience: 15 years</p>
+			<p>Location: Los Angeles, CA</p>
+		</div>
+		<div class="card">
+			<img src="https://via.placeholder.com/300x300" alt="Doctor 3">
+			<h2>Doctor 3</h2>
+			<p>Specialty: Neurology</p>
+			<p>Experience: 12 years</p>
+			<p>Location: Chicago, IL</p>
+		</div>
+		<div class="card">
+			<img src="https://via.placeholder.com/300x300" alt="Doctor 4">
+			<h2>Doctor 4</h2>
+			<p>Specialty: Oncology</p>
+			<p>Experience: 8 years</p>
+			<p>Location: Houston, TX</p>
+		</div>
+	</div>
+</body>
+</html>

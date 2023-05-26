@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Healthcare Organizations</title>
+	<style>
+		.container {
+			background-image: url(images/img.jpg);
+			background-size: cover;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.box {
+			padding-top: 100px;
+			text-align: end;
+			width: 200px;
+			height: 200px;
+			background-color: #f0f0f0;
+			margin: 0 20px;
+			border-radius: 0px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			cursor: pointer;
+			border: 4px solid rgb(255, 255, 255);
+			text-decoration: none;
+		}
+
+		.box:hover {
+			transform: scale(1.05);
+			transition: 0.5s;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+		}
+
+		.box h2 {
+			margin: 0;
+			font-size: 24px;	
+			position: relative;
+			bottom: -70px;
+					
+		}
+
+		.box p {
+			margin: 10px 0 0;
+			font-size: 16px;
+			position: relative;
+			bottom: -65px;
+			
+
+		}
+
+		.texts{
+			color: rgb(0, 0, 0);
+			text-align: center;
+			bottom: -30%;
+			
+			
+		}
+		#box1{
+			background-image:  url(images/patient_img.jpg);
+			background-position: 1050px bottom;
+			background-size: auto;
+			color: black;
+		}
+
+		#box2{
+			background-image: url(images/doctor_img.jpg);
+			background-size: cover;
+			
+		}
+
+		#box3{
+			background-image: url(images/ngo_img.jpg);
+			background-size: cover;
+			background-position: 50% bottom;
+			
+		}
+
+	</style>
+</head>
+<body>
+	
+	<div class="container">
+
+		<a href="patient.html" class="box" id="box1">
+			
+			<div class="texts">
+				<div class="shape"></div>
+				<h2>Patient</h2>
+				<p>Get healthcare services</p>
+				
+			</div>
+		</a>
+
+		<a href="doctor.html" class="box" id="box2">
+			<div class="texts">
+				<h2>Doctor's</h2>
+				<p>Provide healthcare services</p>
+			</div>	
+		</a>
+
+		<a href="ngo.html" class="box" id="box3">
+			<div class="texts">
+				<h2>NGO's</h2>
+				<p>Support healthcare initiatives</p>
+			</div>
+		</a>
+	</div>
+</body>
+</html>

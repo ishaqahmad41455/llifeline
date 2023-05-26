@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Patient Details</title>
+	<style>
+		body{
+			background-image: url(images/img.jpg);
+			background-size: cover;
+		}
+
+		form {
+			max-width: 600px;
+			margin: 50px auto;
+			padding: 20px;
+			background-color: #f0f0f0;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			font-family: Arial, sans-serif;
+		}
+
+		input[type="text"], input[type="email"], input[type="tel"], textarea {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			color: #333;
+			background-color: #fff;
+			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+		}
+
+		input[type="submit"] {
+			display: block;
+			margin: 20px auto 0;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			font-weight: bold;
+			color: #fff;
+			background-color: #007bff;
+			cursor: pointer;
+			transition: background-color 0.2s;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #0069d9;
+		}
+
+		label {
+			display: block;
+			font-size: 16px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 5px;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<label for="name">Full Name:</label>
+		<input type="text" id="name" name="name" required>
+
+		<label for="email">Email Address:</label>
+		<input type="email" id="email" name="email" required>
+
+		<label for="phone">Phone Number:</label>
+		<input type="tel" id="phone" name="phone" required>
+
+		<label for="dob">Date of Birth:</label>
+		<input type="date" id="dob" name="dob" required>
+
+		<label for="gender">Gender:</label>
+		<select id="gender" name="gender" required>
+			<option value="">Select gender...</option>
+			<option value="male">Male</option>
+			<option value="female">Female</option>
+			<option value="other">Other</option>
+		</select>
+
+		<label for="symptoms">Symptoms:</label>
+		<textarea id="symptoms" name="symptoms" required></textarea>
+
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>
