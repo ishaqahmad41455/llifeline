@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Dashboard</h1>
+        <p class="lead">See Latest Inquiries and Treatments </p>
+        <hr class="my-4">
+        <p>See the latest inquiries from patients and treatments that you hvae done on those.</p>
+      </div>
+      <hr>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Welcome Doctor {{ user.username }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">See Latest</h5>
+                    <p class="card-text">See the latest inquiries from people </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-8">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-3">Treatments You Have Done</h1>
+                    <p class="lead">All the treatments you have done so far</p>
+                    <hr class="my-2">
+
+                </div>
+            </div>
+            {% if attended_inquiries %}
+            {% for inquiry in attended_inquiries %}
+            <div class="card my-1">
+                <div class="card-body">
+                    <h5 class="card-title">Patient Name : {{inquiry.patient.username}}</h5>
+                    <p class="card-text">Suggestions: {{inquiry.suggestions}}</p>
+                    <p class="card-text ">Treated on : {{inquiry.date}}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'treatment_details' inquiry.id %}" lass="btn btn-primary" type="button">View
+                        Treatment </a>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>No Treatments Yet.</p>
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-3">New Pending Inquiries</h1>
+                    <p class="lead">Save some Lifes, Help others</p>
+                    <hr class="my-2">
+
+                </div>
+            </div>
+            {% if un_attended_inquiries %}
+            {% for inquiry in un_attended_inquiries %}
+            <div class="card my-2">
+                <div class="card-header">
+                    <h5> Patient Name: {{inquiry.user.username}}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text my-0 lead">Message </p>
+                    <p class="font-weight-bold">{{inquiry.message}}</p>
+                    <p class="card-text my-0 lead"">Symptoms</p>
+                    <p>{{inquiry.symptoms}}</p>
+                    <p class=" card-text my-0 lead"">Age</p>
+                    <p>{{inquiry.age}}</p>
+                    <p class="card-text my-0 lead"">Gender</p>
+                    <p>{{inquiry.gender}}</p>
+                    <p class=" card-text my-0 lead"">Address</p>
+                    <p>{{inquiry.address}}</p>
+                    <p>Posted on {{inquiry.date}}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'treatments' inquiry.id %}" lass="btn btn-primary" type="button">Suggestions and
+                        Treatment </a>
+                </div>
+
+            </div>
+
+            {% endfor %}
+            {% else %}
+            <p>No inquiries found.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

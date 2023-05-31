@@ -25,7 +25,6 @@ SECRET_KEY = 'django-insecure-1g2m(3w=!nzbnsmw%&#3^2x8)_$rsr1_y(j%jxtfj7*_bbv8e2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
@@ -87,9 +86,16 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
+        'OPTIONS': {
+            'sql_mode': 'STRICT_TRANS_TABLES',
+        }
     }
 }
 
+ALLOWED_HOSTS = ['*.ngrok.io','*','localhost:8080']
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok-free.app',]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

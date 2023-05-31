@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-4">Dashboard</h1>
+    <p class="lead">See Your Inquiries and Treatments </p>
+    <hr class="my-4">
+    <p>control and see the latest infromation on the treatments and inquires that you have.</p>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">Profile Information</div>
+        <div class="card-body">Name :</h5>
+          <h5> {{ user.first_name }} {{user.last_name}}</h5>
+          <p class="card-text my-0">Username : {{ user.username }}</p>
+          <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Address: </p>
+          <p class="" style="font-size: 18px;">{{ user.address }}</p>
+          <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Phone: </p>
+          <p class="" style="font-size: 18px;">{{ user.phone }}</p>
+          <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Gender: </p>
+          <p class="" style="font-size: 18px;">{{ user.gender }}</p>
+          <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Date of Birth: </p>
+          <p class="" style="font-size: 18px;">{{ user.dob }}</p>
+          <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Age: </p>
+          <p class="" style="font-size: 18px;">{{ user.age }}</p>
+          <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">joined on </p>
+          <p class="" style="font-size: 18px;">{{ user.date_joined }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <p class="display-6">Pending Inquiries </p>
+      {% if inquiries %}
+      {% for inquiry in inquiries %}
+      <div class="card my-1">
+        <div class="card-header">Inquiry</div>
+        <div class="card-body">
+            
+              <h6> Message</h6>
+              <p> {{ inquiry.message }} </p>
+              <h6> Symptoms</h6>
+              <p>{{ inquiry.symptoms }} </p>
+              
+              <p class="text-muted">Posted on {{ inquiry.date }} </p>
+        </div>
+        <div class="card-footer">
+          <a href="{% url 'inquiry_details' inquiry.id %}" class="btn btn-primary">View Inquiry </a>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <p>No inquiries found.</p>
+      {% endif %}
+    </div>
+    <div class="col-md-5">
+      <p class="display-6">Treatmests done </p>
+      {% if treatments %}
+      {% for treatment in treatments %}
+      <div class="card my-1">
+        <div class="card-header">Treatment</div>
+        <div class="card-body">
+            <h6> Message </h6>
+            <p> {{ treatment.inquiry.message }} </p>
+            <h6> Symotoms </h6>
+            <p> {{ treatment.inquiry.symptoms }} </p>
+            <h6> Suggestions </h6>
+            <p> {{ treatment.suggestions }} </p>
+            <h6> Doctor </h6>
+            <p> {{ treatment.doctor.username }} </p>
+            <p class="text-muted">Posted on {{ treatment.date }} </p>
+        </div>
+        <div class="card-footer">
+          <a href="{% url 'treatment_details' treatment.id %}" class="btn btn-primary">View Treatment </a>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <p>No treatments found.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

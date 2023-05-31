@@ -2,14 +2,14 @@
 
 {% block content %}
 
-<div class="px-4 py-5 my-5 text-center">
-<img class="d-block mx-auto mb-4" src="/media/static/hero.jpeg" style="height:400px">
+<div class="px-4 py-3 my-3 text-center">
+<img class="d-block mx-auto mb-4 img img-responsive img-fluid " style="max-height: 300px" src="/media/static/hero.jpeg" >
     <h1 class="display-5 fw-bold">Life Line</h1>
     <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Life Matter, Life Line is a platform to get connected to a doctor or NGO that can help You Get life on track.</p>
+        <p class="lead mb-4" style="font-size:1.6em">Life Matters, <span  style="color: #e04115;font-size:1.2em; font-weight:bold">Life Line </span>is a platform to get connected to a doctor or NGO that can help You Get life on track.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a href= type="button" class="btn btn-primary btn-lg px-4 gap-3">Talk to a Doctor</a>
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button>
+            <a href="{% url 'talktodoctor' %}" type="button" class="btn btn-primary btn-lg px-4 gap-3">Talk to a Doctor</a>
+            <a href="{% url 'register' %}" type="button" class="btn btn-outline-secondary btn-lg px-4">Register yourself</a>
         </div>
     </div>
 </div>

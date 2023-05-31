@@ -1,0 +1,77 @@
+{% extends 'base.html'  %}
+{% block content %}
+<div class="container">
+
+    <div class="jumbotron ">
+        <div class="container">
+            <h1 class="display-3">Treatment Details</h1>
+            <p class="lead">Treatment Details for {{treatment.patient.first_name}} {{treatment.patient.last_name}}</p>
+            <hr class="my-2">
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card my-1">
+                <div class="card-header">Patient Information</div>
+                <div class="card-body">
+                    <h5 class="card-title">Name :</h5>
+                    <h5> {{ treatment.patient.first_name }} {{ treatment.patient.last_name }}</h5>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Address: </p>
+                    <p class="" style="font-size: 18px;">{{ treatment.patient.address }}</p>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Phone: </p>
+                    <p class="" style="font-size: 18px;">{{ treatment.patient.phone }}</p>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Gender: </p>
+                    <p class="" style="font-size: 18px;">{{ treatment.patient.gender }}</p>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Age: </p>
+                    <p class="" style="font-size: 18px;">{{ treatment.patient.age }}</p>
+                </div>
+            </div>
+            <div class="card my-1">
+                <div class="card-header">doctor Information</div>
+                <div class="card-body">
+                    <h5 class="card-title">Name :</h5>
+                    <h5> {{ treatment.doctor.first_name }} {{ treatment.doctor.last_name }}</h5>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Address: </p>
+                    <p class="" style="font-size: 18px;">{{ treatment.doctor.address }}</p>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Phone: </p>
+                    <p class="" style="font-size: 18px;">{{ treatment.doctor.phone }}</p>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Gender: </p>
+                    <p class="" style="font-size: 18px;">{{ treatment.doctor.gender }}</p>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Age: </p>
+                    <p class="" style="font-size: 18px;">{{ treatment.doctor.age }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card my-2">
+                <div class="card-header">
+                    <h5> Symptoms and Message From Patient</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text my-0 lead">Message </p>
+                    <p class="font-weight-bold">{{treatment.inquiry.message}}</p>
+                    <p class="card-text my-0 lead"">Symptoms</p>
+                    <p>{{treatment.inquiry.symptoms}}</p>
+                    <p>Posted on {{treatment.inquiry.date}}</p>
+                </div>
+                
+
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Suggestions And Medicines</h5>
+                    <p class="display-6 ">Suggestions </p>
+                    <p class="card-text">{{treatment.suggestions}}</p>
+                    <p class="display-6 ">Medicines </p>
+                    <p class="card-text">{{treatment.meds}}</p>
+                </div>
+            </div>
+        </div>  
+    </div>
+
+</div>
+
+{% endblock %}

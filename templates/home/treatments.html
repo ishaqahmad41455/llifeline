@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="jumbotron py-5">
+        <div class="container">
+          <h1 class="display-3">Suggest A Treatment</h1>
+          <p>Quickly Respond to the inquiry, suggest a treatment, or get in touch, suggest some meds as well</p>
+          </div>
+          <hr>  
+      </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">Patient Information</div>
+                <div class="card-body">
+                    <h5 class="card-title">Username:</h5>
+                    <h5> {{ inquiry.user.username }}</h5>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Address: </p>
+                    <p class="" style="font-size: 18px;">{{ inquiry.user.address }}</p>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Phone: </p>
+                    <p class="" style="font-size: 18px;">{{ inquiry.user.phone }}</p>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Gender: </p>
+                    <p class="" style="font-size: 18px;">{{ inquiry.user.gender }}</p>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Date of Birth: </p>
+                    <p class="" style="font-size: 18px;">{{ inquiry.user.dob }}</p>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">Age: </p>
+                    <p class="" style="font-size: 18px;">{{ inquiry.user.age }}</p>
+                    <p class="card-text my-0" style=" font-size:18px ;font-weight:bold;">joined on </p>
+                    <p class="" style="font-size: 18px;">{{ inquiry.user.date_joined }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="container">
+                <div class="jumbotron">
+                    <h1 class="display-3">Suggest Treatment</h1>
+                    <p class="lead">Suggest Treatment or Medicine</p>
+                    <hr class="my-2">
+
+                </div>
+                <section>
+                    <p class="display-6">Message</p>
+                    <p>
+                        {{ inquiry.message }}
+                    </p>
+                    <p class="display-6">
+                        Symptoms
+                    </p>
+                    <p>
+                        {{ inquiry.symptoms }}
+                    </p>
+                    <p>posted on {{inquiry.date}}</p>
+                </section>
+                <form method="post" action="{% url 'save_treatments' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="suggestion">Suggestion</label>
+                        <textarea class="form-control" name="suggestion" id="suggestion" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="meds">Medicines</label>
+                        <textarea class="form-control" name="meds" id="meds" rows="3"></textarea>
+                    </div>
+                    <div class="btn-group-toggle my-2" data-toggle="buttons">
+                        <label for="treated" class="">
+                            <input name="treated" id="treated" type="checkbox"> Mark as Treated
+                        </label>
+                    </div>
+                    <input type="hidden" name="inquiry" value="{{ inquiry.id }}">
+                    <input type="hidden" name="doctor" value="{{request.user.id}}">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <p class="display-6">Refer to NGOs</p>
+            {% if ngos %}
+            <form method="post" action="{% url 'refer_to_ngo' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="ngos_select">Select NGOs</label>
+                    <select id="ngos_select" class="form-control" name="ngos" multiple>
+                        {% for ngo in ngos%}
+                        <option value="{{ ngo.id }}">{{ ngo.username }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div>
+                    <label for="treated_ngo" class="btn">
+                        <input id="treated_ngo" name="treated_ngo" type="checkbox"> Mark as Treated
+                    </label>
+                </div>
+                <input type="hidden" name="inquiry" value="{{ inquiry.id }}">
+                <button type="submit" class="btn btn-primary my-2">Refer To These </button>
+            </form>
+            {% else %}
+            <p>No NGOs registered Yet!</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+    {% endblock %}

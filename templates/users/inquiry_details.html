@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-3">Inquiry Details</h1>
+                <p class="lead">See the Detailed Inquiry details</p>
+                <hr class="my-2">
+            </div>
+        </div>
+    
+    <div class="row">
+        
+        <div class="card my-2">
+            <div class="card-header">
+               <h5> Patient Name: {{inquiry.user.username}}</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text my-0 lead">Message </p>
+                <p class="font-weight-bold">{{inquiry.message}}</p>
+                <p class="card-text my-0 lead"">Symptoms</p>
+                <p>{{inquiry.symptoms}}</p>
+                <p class="card-text my-0 lead"">Age</p>
+                <p>{{inquiry.age}}</p>
+                <p class="card-text my-0 lead"">Gender</p>
+                <p>{{inquiry.gender}}</p>
+                <p class="card-text my-0 lead"">Address</p>
+                <p>{{inquiry.address}}</p>
+                <p>Posted on {{inquiry.date}}</p>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <h1>Register</h1>
+            <h1>Register <Strong style="color: rgb(224, 65, 21);text-transform: uppercase">{{ page }}</Strong></h1>
             
             <form action="" method="post" style="width: 500px">
                 {% csrf_token %}
@@ -26,6 +26,7 @@
         
                 <button type="submit" class="btn btn-primary btn-lg my-2">Register</button>
             </form>
+            <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
         </div>
         <div class="col-md-2"></div>
     </div>

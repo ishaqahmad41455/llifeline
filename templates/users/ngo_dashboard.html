@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Dashboard</h1>
+        <p class="lead">See Your Inquiries and Refferals </p>
+        <hr class="my-4">
+        <p>control and see the latest infromation on the treatments and referrals that you have.</p>
+      </div>
+      <hr>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Welcome {{ user.username }}'s Staff 
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">See Latest</h5>
+                    <p class="card-text">See the latest Referrals from doctors </p>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-8">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-3">Patients You Have Handeled</h1>
+                    <p class="lead">All the people you have handled so far</p>
+                    <hr class="my-2">
+                    
+                </div>
+            </div>
+            {% if attended_inquiries %}
+            {% for inquiry in attended_inquiries %}
+                <div class="card my-1">
+                    <div class="card-body">
+                        <h5 class="card-title">Patient Name : {{inquiry.user.username}}</h5>
+                        <p class="card-text">Age: {{inquiry.age}}</p>
+                        <p class="card-text ">Treated on : {{inquiry.date}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            {% else %}
+            <p>No Treatments Yet.</p>
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-3">New Pending Inquiries</h1>
+                    <p class="lead">Save some Lifes, Help others</p>
+                    <hr class="my-2">
+                    
+                </div>
+            </div>
+            {% if new_referrals %}
+            {% for inquiry in new_referrals %}
+            <div class="card my-2">
+                <div class="card-header">
+                   <h5> Patient Name: {{inquiry.user.username}}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text my-0 lead">Message </p>
+                    <p class="font-weight-bold">{{inquiry.message}}</p>
+                    <p class="card-text my-0 lead"">Symptoms</p>
+                    <p>{{inquiry.symptoms}}</p>
+                    <p class="card-text my-0 lead"">Age</p>
+                    <p>{{inquiry.age}}</p>
+                    <p class="card-text my-0 lead"">Gender</p>
+                    <p>{{inquiry.gender}}</p>
+                    <p class="card-text my-0 lead"">Address</p>
+                    <p>{{inquiry.address}}</p>
+                    <p>Posted on {{inquiry.date}}</p>
+                </div>
+                <form class="card-footer"" action="{% url 'ngo_treatment'  %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="inquiry_id" value="{{inquiry.id}}">
+                    <p>We will be in touch with {{inquiry.user.username}}</p>
+                    <button type="submit" class="btn btn-primary">Mark as Attended</button>
+                </form>
+                
+            </div>
+            
+            {% endfor %}
+            {% else %}
+            <p>No inquiries found.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
