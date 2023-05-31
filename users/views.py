@@ -85,7 +85,7 @@ def register(request):
         if form.is_valid():
             if CustomUser.objects.filter(email=form.cleaned_data.get('email')).exists() or CustomUser.objects.filter(username=form.cleaned_data.get('username') ).exists():
                 messages.info(request, 'Email or username already exists')
-                return render (request ,'users/register',{'form':form})
+                return render (request ,'users/register.html',{'form':form})
             user = form.save(commit=False)
             password = form.cleaned_data.get('password')
             dob = form.cleaned_data.get('dob')
